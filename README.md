@@ -1,4 +1,4 @@
-# Compound-Interest-BTC-Calculator v2
+# Compound-Interest-BTC-Calculator v2 (including ETF)
 
 A minimal BTC compound interest calculator showing how reinvested profits can grow over time.
 
