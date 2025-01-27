@@ -27,7 +27,7 @@ This project also demonstrates the concept of the “4% Rule,” a popular guide
 - View the projected growth over time  
 
 ## Live Demo
-[Try it out here](https://lomar92.github.io/compound-interest-btc-calculator-v2/) *(Replace with the actual URL if different.)*
+[Try it out here](https://btc-etf-retirement.netlify.app/) *(Replace with the actual URL if different.)*
 
 ## Contributing
 Feel free to submit issues or pull requests. Any help to improve this project is welcome!
