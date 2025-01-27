@@ -31,6 +31,3 @@ This project also demonstrates the concept of the “4% Rule,” a popular guide
 
 ## Contributing
 Feel free to submit issues or pull requests. Any help to improve this project is welcome!
-
-## License
-This project is licensed under the [MIT License](LICENSE).
