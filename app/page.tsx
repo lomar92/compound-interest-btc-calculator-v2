@@ -24,6 +24,34 @@ export default function Home() {
         {/* Main content area */}
         <div className="max-w-[1400px] mx-auto">
           <Calculator />
+          
+          {/* Social links */}
+          <div className="flex items-center justify-end gap-4 mt-8 pb-4">
+            <a
+              href="https://github.com/lomar92/compound-interest-btc-calculator-v2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-90 transition-opacity flex items-center"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                alt="GitHub Profile"
+                className="h-[36px] w-auto"
+              />
+            </a>
+            <a
+              href="https://buymeacoffee.com/lomar92"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-90 transition-opacity flex items-center"
+            >
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Donate&emoji=🙏&slug=lomar92&button_colour=f7941a&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00&counter=false"
+                alt="Donate"
+                className="h-[36px] w-auto"
+              />
+            </a>
+          </div>
         </div>
       </main>
     </Suspense>
