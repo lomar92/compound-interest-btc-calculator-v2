@@ -34,7 +34,7 @@ export default function Home() {
               className="hover:opacity-90 transition-opacity flex items-center"
             >
               <img
-                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                src="/img/github-logo.png"
                 alt="GitHub Profile"
                 className="h-[36px] w-auto"
               />
