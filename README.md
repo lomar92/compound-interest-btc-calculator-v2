@@ -23,7 +23,7 @@ This project also demonstrates the concept of the “4% Rule,” a popular guide
 
 ## Usage
 - Open your browser at `http://localhost:3000`  
-- Enter the principal, rate, and duration  
+- Enter the values 
 - View the projected growth over time  
 
 ## Live Demo
