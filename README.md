@@ -7,7 +7,7 @@ A minimal BTC compound interest calculator showing how reinvested profits can gr
 This project also demonstrates the concept of the “4% Rule,” a popular guideline in financial planning. It suggests withdrawing a maximum of 4% of your portfolio annually to ensure long-term sustainability. While originally applied to traditional portfolios, it can also be adapted to crypto investments to plan withdrawals responsibly.
 
 ## Features
-- Quick calculation of compound interest for Bitcoin  
+- Quick calculation of compound interest for Bitcoin or ETF or both.  
 - Simple UI for adjusting principal, annual interest rate, and time frame  
 - Real-time results and easy-to-read charts  
 
