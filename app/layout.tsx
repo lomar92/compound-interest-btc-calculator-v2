@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: 'Calculate your retirement portfolio with Bitcoin and ETF investments',
   icons: {
     icon: '/img/btc.png',               // Standard-Favicon
-    shortcut: '/img/btc-16x16.png',     // Shortcut-Favicon
     apple: '/img/btc.png',              // iOS-Icon
     other: {
       rel: 'apple-touch-icon-precomposed',
