@@ -12,11 +12,6 @@ interface InvestmentChartProps {
 export default function InvestmentChart({ data }: InvestmentChartProps) {
   if (!data) return null
 
-  // Validate Bitcoin values before rendering
-  if (!data.totalBTC || !Number.isFinite(data.totalBTC)) {
-    return <div className="text-red-500">Invalid Bitcoin data</div>
-  }
-
   return (
     <Card className="w-full min-w-[800px] h-full">
       <CardHeader>
@@ -138,4 +133,3 @@ export default function InvestmentChart({ data }: InvestmentChartProps) {
     </Card>
   )
 }
-
