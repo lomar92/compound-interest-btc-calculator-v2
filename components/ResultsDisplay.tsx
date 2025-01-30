@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "@/components/ui/button" 
 import { toast } from "@/hooks/use-toast"
 import { Settings, Check } from "lucide-react"
@@ -36,6 +36,7 @@ export default function ResultsDisplay({
   const [showColumns, setShowColumns] = useState({
     totalValue: true,
     btcAmount: true,
+    btcValue: true,
     btcPurchased: true,
     etfValue: true,
     etfContribution: true,
@@ -185,6 +186,11 @@ export default function ResultsDisplay({
                           ETF Value
                         </th>
                       )}
+                      {showColumns.btcValue && (
+                        <th className="p-3 text-right font-medium text-[#F7931A] whitespace-nowrap">
+                          ₿ Value
+                        </th>
+                      )}
                       {showColumns.etfContribution && (
                         <th className="p-3 text-right font-medium text-muted-foreground whitespace-nowrap">
                           ETF Contribution
@@ -242,6 +248,14 @@ export default function ResultsDisplay({
                             })}
                           </td>
                         )}
+                       {showColumns.btcValue && (
+                         <td className="p-3 text-right text-[#F7931A] font-medium">
+                           {year.btcValue.toLocaleString("en-US", {
+                             style: "currency",
+                             currency: "EUR",
+                           })}
+                         </td>
+                       )}
                         {showColumns.etfContribution && (
                           <td className="p-3 text-right">
                             {year.etfContribution.toLocaleString("en-US", {
