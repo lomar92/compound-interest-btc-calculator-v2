@@ -82,14 +82,16 @@ export function calculateInvestments(params: CalculationParams) {
   const { initialCapital, monthlyETF, monthlyBTC, etfReturn, btcGrowth, years, currentBTCPrice, btcHodl, inflation } =
     params
 
-  let totalValue = Number(initialCapital) + Number(btcHodl) * Number(currentBTCPrice)
+  // Initialize values
+  let totalValue = 0
   let totalBTC = Number(btcHodl)
-  let totalETF = Number(initialCapital) * (Number(monthlyETF) / (Number(monthlyETF) + Number(monthlyBTC) || 1))
+  let totalETF = Number(initialCapital)
   const yearlyBreakdown = []
 
   const monthlyETFRate = (1 + etfReturn / 100) ** (1 / 12) - 1
   const monthlyBTCRate = (1 + btcGrowth / 100) ** (1 / 12) - 1
   const monthlyInflationRate = (1 + inflation / 100) ** (1 / 12) - 1
+  const realMonthlyETFRate = ((1 + etfReturn / 100) / (1 + inflation / 100)) ** (1 / 12) - 1
 
   const currentYear = new Date().getFullYear()
   let btcPrice = currentBTCPrice
@@ -98,10 +100,15 @@ export function calculateInvestments(params: CalculationParams) {
     const yearStartBTC = totalBTC
     const yearStartETF = totalETF
     let yearlyBTCPurchased = 0
+    let yearlyETFContributions = 0
+
+    // Calculate BTC value at start of year for growth calculation
+    const yearStartBTCValue = yearStartBTC * btcPrice
 
     for (let month = 1; month <= 12; month++) {
       // ETF investment
-      totalETF = Math.max(totalETF + monthlyETF, 0) * (1 + monthlyETFRate)
+      yearlyETFContributions += monthlyETF
+      totalETF = (totalETF + monthlyETF) * (1 + realMonthlyETFRate)
 
       // BTC purchase
       if (monthlyBTC > 0) {
@@ -113,13 +120,11 @@ export function calculateInvestments(params: CalculationParams) {
       // Update BTC price monthly
       btcPrice *= 1 + monthlyBTCRate
 
-      // Apply inflation
-      totalETF /= 1 + monthlyInflationRate
       btcPrice /= 1 + monthlyInflationRate
     }
 
     const btcValue = totalBTC * btcPrice
-    totalValue = totalETF + btcValue
+    totalValue = Math.max(totalETF + btcValue, 0)
 
     yearlyBreakdown.push({
       year: currentYear + year,
@@ -129,9 +134,9 @@ export function calculateInvestments(params: CalculationParams) {
       etfValue: totalETF,
       btcValue: btcValue,
       btcPurchased: yearlyBTCPurchased,
-      etfContribution: monthlyETF * 12,
+      etfContribution: yearlyETFContributions,
       btcContribution: monthlyBTC * 12,
-      etfGrowth: totalETF - yearStartETF - monthlyETF * 12,
+      etfGrowth: totalETF - yearStartETF - yearlyETFContributions,
       btcGrowth: btcValue - yearStartBTC * btcPrice - monthlyBTC * 12,
     })
   }
@@ -146,4 +151,3 @@ export function calculateInvestments(params: CalculationParams) {
 }
 
 export { calculateRetirementSustainability }
-
