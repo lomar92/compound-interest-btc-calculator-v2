@@ -1,20 +1,20 @@
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = ".next"
   functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/netlify/functions/*"
+  to = "/.netlify/functions/:splat"
   status = 200
 
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://rsms.me; img-src 'self' data: https://images.unsplash.com https://stackblitz.com; font-src 'self' https://rsms.me; connect-src 'self' https://*.netlify.app https://api.sendgrid.com; frame-ancestors 'none'; form-action 'self';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://rsms.me; img-src 'self' data: https://images.unsplash.com https://stackblitz.com; font-src 'self' https://rsms.me; connect-src 'self' https://*.netlify.app https://api.coindesk.com; frame-ancestors 'none'; form-action 'self';"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
