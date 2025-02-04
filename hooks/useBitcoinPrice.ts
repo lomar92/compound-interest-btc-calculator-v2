@@ -5,6 +5,7 @@ export function useBitcoinPrice() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  // Fetch price only once when component mounts
   useEffect(() => {
     async function fetchPrice() {
       try {
@@ -25,12 +26,7 @@ export function useBitcoinPrice() {
     }
 
     fetchPrice()
-    // Fetch price every 5 minutes
-    const interval = setInterval(fetchPrice, 15 * 60 * 1000)
-
-    return () => clearInterval(interval)
   }, [])
 
   return { price, loading, error }
 }
-
