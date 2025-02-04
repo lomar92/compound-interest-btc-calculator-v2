@@ -8,7 +8,7 @@ export function useBitcoinPrice() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const response = await fetch("/api/btc-price")
+        const response = await fetch("/netlify/functions/btc-price")
         const data = await response.json()
 
         if (data.error) {
@@ -26,7 +26,7 @@ export function useBitcoinPrice() {
 
     fetchPrice()
     // Fetch price every 5 minutes
-    const interval = setInterval(fetchPrice, 5 * 60 * 1000)
+    const interval = setInterval(fetchPrice, 15 * 60 * 1000)
 
     return () => clearInterval(interval)
   }, [])
